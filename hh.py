@@ -94,7 +94,7 @@ def HH(sage0, z0, maxiter = 30, stol = 1e-10, atol = 0.1):
         iterpertry = iterpertry + 1
 
   if abs(Savz[nag-1,z0-1]) > atol:
-    HH_nonconvz[z0-1] = 1 # counter
+    HH_nonconvz[nag-1,z0-1] = 1 # counter
 
 
 def HHall(starttime = 1, calibinit = False, scaleA = 1):
