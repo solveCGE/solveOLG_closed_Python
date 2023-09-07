@@ -28,7 +28,7 @@ exec(open("firm.py").read())
 tend            = 300   # number of periods
 nag             = 100   # number of age groups (nag = x => max age = x-1)
 budget_bal      = 3     # budget closing instrument (1.. tauW, 2.. tauF, 3.. tauC, 4.. taul, 5.. tauprof, 6.. cG) to fulfill given debt path
-genplots        = True  # generate plots
+genplots        = False  # generate plots
 
 # initializes all variables globally
 exec(open("initdata.py").read())
@@ -80,11 +80,11 @@ gamv[59:nag,:] = 1-(1-gamv[59:nag,:])*0.9; gamv[nag-1,:]=0; gamz = per2coh(gamv)
 ##########################
 
 # Solve transition path to new steady state
-solveOLG(starttime = 1, maxiter = 200, tol = 1e-2)
+solveOLG(starttime = 1, maxiter = 200, tol = 1e-4)
 
+# some transition plots
 if genplots:
 
-  # some transition plots
   plt.figure()
   plt.plot(range(0,tend+1),append(r0,r))
   plt.xlabel("time")

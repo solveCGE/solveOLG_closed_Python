@@ -114,9 +114,8 @@ def solveOLG(starttime = 1, maxiter = 200, tol = 1e-4, damping_budget = 1.0, dam
 
     # check Walras' Law: this always has to hold (even out of equilibrium)! If not there is something wrong with accounting in the model
     if max(abs(edw[starttime-1:tend-1]))> 1e-10:
-      #raise ValueError("Error: Walras Law does not hold!")
-      pass # delete later
-
+      raise ValueError("Error: Walras Law does not hold!")
+      
     tend_iter     = default_timer()
 
     #===== checking error and breaking loop ======# 	
@@ -188,6 +187,6 @@ def solveOLG(starttime = 1, maxiter = 200, tol = 1e-4, damping_budget = 1.0, dam
   
   tend_loop = default_timer()
   print("Computation time:\t", "{:.4f}".format(tend_loop-tstart_loop), "sec")
-  print("CHECK SOLUTION:\t\t", sum(abs(edy)+abs(edl)+abs(edg)+abs(eda)+abs(ediv)+abs(edab)))
+  print("CHECK SOLUTION:\t\t", max(abs(edy)+abs(edl)+abs(edg)+abs(eda)+abs(ediv)+abs(edab)))
   
   
